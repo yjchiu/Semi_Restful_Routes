@@ -1,0 +1,40 @@
+<!DOCTYPE hyml>
+
+
+<html lang="en">
+    <head>
+        <title>All Products</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Products</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th> 
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products%}
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>{{product.description}}</td> 
+                            <td>${{product.price}}</td>
+                            <td>
+                                <a class="btn btn-default" href="/products/show/{{ product.id }}">Show</a>
+                                <a class="btn btn-default" href="/products/edit/{{ product.id }}">Edit</a>
+                                <a class="btn btn-primary" href="/products/destroy/{{ product.id }}">Remove</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a class="btn btn-default" href="/products/new">Add a new product</a>
+        </div>
+    </body>
+</html>
